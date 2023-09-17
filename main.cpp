@@ -17,8 +17,8 @@ int main() {
         return 1;
     }
 
-    // URL à partir de laquelle vous souhaitez obtenir le JSON
-    std::string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=WN32ZXLWA3QW33P1"; // Remplacez par votre propre URL
+    // URL à partir de laquelle on obtient leJSON
+    std::string url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=WN32ZXLWA3QW33P1";
 
     // Initialiser la réponse
     std::string response;
@@ -28,7 +28,7 @@ int main() {
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
-    // Exécuter la requête HTTP GET
+    // Exécute la requête HTTP GET
     CURLcode res = curl_easy_perform(curl);
     if (res != CURLE_OK) {
         std::cerr << "Erreur lors de l'exécution de la requête : " << curl_easy_strerror(res) << std::endl;
@@ -39,11 +39,10 @@ int main() {
     // Fermer libcurl
     curl_easy_cleanup(curl);
 
-    // Vous avez maintenant le JSON dans la chaîne 'response'
+    //le JSON dans la chaîne 'response'
     std::cout << "Réponse JSON : " << response << std::endl;
 
-    // Ici, vous pouvez analyser le JSON et créer des graphiques en fonction de son contenu
-    // Vous devrez utiliser une bibliothèque de tracé de graphiques appropriée pour cette tâche
+
 
     return 0;
 }
